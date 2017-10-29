@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Web Development School </title>
+
+    <link rel="stylesheet" type="text/css" href="/front/styles/styles.css">
+
+    </head>
+
+<body>
+
+<div class="anonymous">
+<center><h1>Welcome Anonymous User!</h1></center>
+</div>
+
+<div class="end_user">
+<center><h1>Welcome End-User!</h1></center>
+</div>
+
+<div class="agent">
+<center><h1>Welcome Agent!</h1></center>
+</div>
+
+<div class="manager">
+<center><h1>Welcome Manager!</h1></center>
+</div>
+
+
+
+
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <img src="" id="" class="" alt="">
+            <div class="float-left">
+
+                <div id="navlist">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">School
+                                <span class="sr-only">(current)</span>
+                            </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Administration</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="login" class="float-right">
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- login screen changes to header when logedin -->
+    <header class="masthead">
+        <div class="overlay">
+            <div class="container" id="schoolHeader">
+                <h3 class="display-4 text-white">Code School</h3>
+            </div>
+            <div id="loginform" class="container hoverable">
+                <form class="form-signin">
+                    <h2 class="form-signin-heading">Please sign in</h2>
+                    <label for="inputname" class="sr-only">User name</label>
+                    <input type="name" id="inputname" class="form-control" placeholder="User name" required autofocus>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- school empty containr to fill with a template -->
+    <section class="mainscreen gray">
+        <div class="container school-body">
+            <div class="row">
+                <div class="col-md-3 order-3">
+                    <div class="flex-container">
+                        <h5 class="flex-item1">Courses List:</h5>
+                        <button class="flex-item2"><h3>+</h3></button>
+                    </div>
+                    <div id="course"></div>
+                </div>
+
+
+                <div class="col-md-3 order-3 ">
+                    <div class="flex-container">
+                        <h5 class="flex-item1">Student List:</h5>
+                        <button class="flex-item2"><h3>+</h3></button>
+                    </div>
+                    <div id="Students"></div>
+                </div>
+
+                <div class="col-md-6 order-6">
+                    <div class="main-school">
+                        <img class="center" src="back/images/logo_dark.PNG" style="width:65%; margin-bottom:15px;">
+
+                        <h5 class="container2">Total courses in Code School:&nbsp;
+                            <A3 id="Csum"></A3>
+                        </h5> <br>
+                        <h5 class="container2">Total students in Code School:&nbsp;
+                            <A3 id="Ssum"></A3>
+                        </h5>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- administrator empty containr to fill with a template -->
+    <section>
+        <div class="container admin-body">
+            <div class="row">
+                <div class="col-md-3 order-2">
+                </div>
+
+
+                <div class="col-md-9 order-2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white"></p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+
+
+<script src="/front/scripts/entry.js"></script>
+
+
+
+<table>
+<?php
+require_once 'C:\xampp\htdocs\School\back\controllers\studentController.php';
+require_once 'C:\xampp\htdocs\School\back\controllers\courseController.php';
+
+$sc=new StudentController();
+$s=$sc->Read();
+foreach ($s as $student){
+       
+    echo "<tr><td>".$student->getID()."</td></tr>";
+    echo "<tr><td>".$student->getName()."</td></tr>";
+    echo "<tr><td>".$student->getPhone()."</td></tr>";
+    echo "<tr><td>".$student->getEmail()."</td></tr>";
+    echo "<tr><td>".$student->getImage()."</td></tr>";
+}
+
+$cc=new CourseController();
+$c=$cc->Read();
+foreach ($c as $course){
+       
+    echo "<tr><td>".$course->getID()."</td></tr>";
+    echo "<tr><td>".$course->getName()."</td></tr>";
+    echo "<tr><td>".$course->getDescription()."</td></tr>";
+    echo "<tr><td>".$course->getImage()."</td></tr>";
+}
+
+
+?>
+</table>
+
+</body>
+</html>
